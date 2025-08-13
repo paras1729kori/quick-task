@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
+/* change selection color **/
+::selection {
+  background-color: #958831;
+  color: white;
+}
+
+/* Hide scrollbar for Chrome, Safari, and other WebKit browsers */
+.noScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.noScrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
