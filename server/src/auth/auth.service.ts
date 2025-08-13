@@ -7,7 +7,6 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { EmailService } from 'src/email/email.service';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +14,6 @@ export class AuthService {
     private prisma: PrismaService,
     private usersService: UsersService,
     private jwtService: JwtService,
-    private emailService: EmailService,
   ) {}
 
   async validateUser(email: string, pass: string) {
