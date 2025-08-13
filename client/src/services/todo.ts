@@ -1,10 +1,13 @@
 import type { TodoFilters, TodoType } from "../appTypes";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export async function getTodos(jwtToken: string, filters?: TodoFilters) {
   const res = await fetch(
-    `http://localhost:5555/todos?search=${filters?.search || ""}&status=${
-      filters?.status || ""
-    }&priority=${filters?.priority || ""}`,
+    API_URL +
+      `/todos?search=${filters?.search || ""}&status=${
+        filters?.status || ""
+      }&priority=${filters?.priority || ""}`,
     {
       method: "GET",
       headers: {
@@ -18,7 +21,7 @@ export async function getTodos(jwtToken: string, filters?: TodoFilters) {
 }
 
 export async function addTodo(todo: any, jwtToken: string) {
-  const res = await fetch("http://localhost:5555/todos", {
+  const res = await fetch(API_URL + "/todos", {
     method: "POST",
     body: JSON.stringify({
       ...todo,
@@ -33,7 +36,7 @@ export async function addTodo(todo: any, jwtToken: string) {
 }
 
 export async function updateTodo(todo: TodoType, jwtToken: string) {
-  const res = await fetch(`http://localhost:5555/todos/${todo?.id}`, {
+  const res = await fetch(API_URL + `/todos/${todo?.id}`, {
     method: "PUT",
     body: JSON.stringify(todo),
     headers: {
@@ -46,7 +49,7 @@ export async function updateTodo(todo: TodoType, jwtToken: string) {
 }
 
 export async function deleteTodo(todoId: number, jwtToken: string) {
-  const res = await fetch(`http://localhost:5555/todos/${todoId}`, {
+  const res = await fetch(API_URL + `/todos/${todoId}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + jwtToken,

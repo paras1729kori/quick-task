@@ -2,8 +2,10 @@ import { toast } from "sonner";
 import type { UserType } from "../appTypes";
 import _ from "lodash";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export async function register(name: string, email: string, password: string) {
-  await fetch("http://localhost:5555/users/register", {
+  await fetch(API_URL + "/users/register", {
     method: "POST",
     body: JSON.stringify({
       name: name,
@@ -20,7 +22,7 @@ export async function register(name: string, email: string, password: string) {
 }
 
 export async function login(email: string, password: string) {
-  const res = await fetch("http://localhost:5555/auth/login", {
+  const res = await fetch(API_URL + "/auth/login", {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -42,7 +44,7 @@ export async function login(email: string, password: string) {
 }
 
 export async function forgotPassword(email: string) {
-  const res = await fetch("http://localhost:5555/auth/forgot-password", {
+  const res = await fetch(API_URL + "/auth/forgot-password", {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -61,7 +63,7 @@ export async function forgotPassword(email: string) {
 }
 
 export async function resetPassword(token: string, newPassword: string) {
-  const res = await fetch("http://localhost:5555/auth/reset-password", {
+  const res = await fetch(API_URL + "/auth/reset-password", {
     method: "POST",
     body: JSON.stringify({
       token: token,
@@ -77,7 +79,7 @@ export async function resetPassword(token: string, newPassword: string) {
 }
 
 export async function getUserData(email: string, jwtToken: string) {
-  const res = await fetch(`http://localhost:5555/users/detail?email=${email}`, {
+  const res = await fetch(API_URL + `/users/detail?email=${email}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
