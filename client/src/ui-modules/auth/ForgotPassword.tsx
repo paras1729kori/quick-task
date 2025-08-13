@@ -11,7 +11,7 @@ export default function ForgotPassword({
   setCurrentAuthMode: React.Dispatch<React.SetStateAction<AuthType>>;
 }) {
   const [formData, setFormData] = useState({
-    email: "paras@example.com",
+    email: "",
   });
 
   const handleLogin = async () => {

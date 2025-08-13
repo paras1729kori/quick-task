@@ -12,8 +12,8 @@ export default function ResetPassword({
 }) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [formData, setFormData] = useState({
-    password: "password123",
-    confirmPassword: "password123",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleLogin = async () => {

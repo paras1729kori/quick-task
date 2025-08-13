@@ -12,8 +12,8 @@ export default function SignIn({
   setCurrentAuthMode: React.Dispatch<React.SetStateAction<AuthType>>;
 }) {
   const [formData, setFormData] = useState({
-    email: "paras@example.com",
-    password: "password123",
+    email: "",
+    password: "",
   });
   const { setUser } = useAuth();
 

@@ -23,17 +23,23 @@ export default function App() {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f3f4f6_1px,transparent_1px),linear-gradient(to_bottom,#f3f4f6_1px,transparent_1px)] bg-[size:20px_20px]" />
-      <div className="relative z-10 w-full h-full flex flex-col gap-4 items-center justify-between">
+      <div className="relative z-10 w-full h-full flex flex-col overflow-auto gap-4 items-center justify-between">
         <Navbar />
-        <WelcomeHeading />
-        {user?.name && user?.email ? (
-          <Main />
-        ) : (
-          <AuthFactory
-            currentAuthMode={currentAuthMode}
-            setCurrentAuthMode={setCurrentAuthMode}
-          />
-        )}
+        <div
+          className={`w-full flex flex-col overflow-auto gap-4 items-center justify-between ${
+            user?.name && user?.email ? "h-full" : "h-fit"
+          }`}
+        >
+          <WelcomeHeading />
+          {user?.name && user?.email ? (
+            <Main />
+          ) : (
+            <AuthFactory
+              currentAuthMode={currentAuthMode}
+              setCurrentAuthMode={setCurrentAuthMode}
+            />
+          )}
+        </div>
         <Footer />
       </div>
       <Toaster position="bottom-center" />
