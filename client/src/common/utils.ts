@@ -61,6 +61,6 @@ export function getApologyToast() {
   toast("🛠️ Whoopsie-doodle!", {
     description:
       "This feature is still in the oven 🍪 — I'm cooking it up and it'll be ready soon!",
-    duration: 3000,
+    duration: 2500,
   });
 }
