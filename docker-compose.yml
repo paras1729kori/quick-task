@@ -11,43 +11,5 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  # backend service
-  server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    container_name: quicktask_server
-    restart: unless-stopped
-    env_file:
-      - ./server/.env
-    ports:
-      - "3000:5555"
-    depends_on:
-      - postgres
-    volumes:
-      - ./server:/app
-      - /app/node_modules
-
-  # frontend service
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    container_name: quicktask_client
-    restart: unless-stopped
-    env_file:
-      - ./client/.env
-    ports:
-      - "5173:5173"
-    volumes:
-      - ./client:/app
-      - /app/node_modules
-    depends_on:
-      - server
-    command: sleep infinity
-
 volumes:
   postgres_data:
-
-networks:
-  app:
