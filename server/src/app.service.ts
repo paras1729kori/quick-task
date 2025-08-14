@@ -3,6 +3,6 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Quick-Task server is online!';
+    return 'Quick-Task-Master server is online!';
   }
 }

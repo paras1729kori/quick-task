@@ -12,7 +12,7 @@ export default function Navbar() {
           <Help />
         </div>
         <div className="flex-1 text-center px-2">
-          <a className="font-semibold text-xl">Quick-Task</a>
+          <a className="font-semibold text-xl">Quick-Task-Master</a>
         </div>
         <div className="flex items-center gap-2">
           {user?.name && user?.email && (

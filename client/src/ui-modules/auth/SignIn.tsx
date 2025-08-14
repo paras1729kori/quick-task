@@ -5,12 +5,14 @@ import { toast } from "sonner";
 import { useAuth } from "../../contexts/AuthProvider";
 import { login } from "../../services/auth";
 import type { AuthType } from "../../appTypes";
+import { PasswordEyeModes } from "./ResetPassword";
 
 export default function SignIn({
   setCurrentAuthMode,
 }: {
   setCurrentAuthMode: React.Dispatch<React.SetStateAction<AuthType>>;
 }) {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -80,7 +82,7 @@ export default function SignIn({
               />
             </svg>
             <input
-              type="search"
+              type={showPassword ? "text" : "password"}
               className="grow"
               placeholder="********"
               value={formData?.password}
@@ -88,6 +90,10 @@ export default function SignIn({
                 setFormData({ ...formData, password: e.target.value });
               }}
               required
+            />
+            <PasswordEyeModes
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
             />
           </label>
         </form>

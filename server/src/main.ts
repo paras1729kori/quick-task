@@ -7,7 +7,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['http://localhost:5173', 'http://localhost:3000'], // append to list your deployed app url
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://quick-task-master.vercel.app',
+    ], // append to list your deployed app url
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
@@ -15,8 +19,8 @@ async function bootstrap() {
   const config = app.get(ConfigService);
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Quick-Task APIs')
-    .setDescription('Quick-Task APIs routes list')
+    .setTitle('Quick-Task-Master APIs')
+    .setDescription('Quick-Task-Master APIs routes list')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

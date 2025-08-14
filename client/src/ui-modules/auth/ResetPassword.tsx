@@ -31,15 +31,39 @@ export default function ResetPassword({
     }
 
     const resetToken = sessionStorage.getItem("token") || "";
-    await resetPassword(resetToken, formData?.password);
+    const res = await resetPassword(resetToken, formData?.password);
 
-    setCurrentAuthMode("sign-in");
-    sessionStorage.setItem("current_auth_mode", "sign-in");
+    if (res?.message?.includes(/password/i)) {
+      setCurrentAuthMode("sign-in");
+      sessionStorage.setItem("current_auth_mode", "sign-in");
+    }
   };
 
   return (
     <div className="card bg-base-100 w-[90%] md:w-96 shadow-md">
       <div className="card-body items-center text-center">
+        <p
+          className="underline self-start"
+          onClick={() => {
+            setCurrentAuthMode("forgot-password");
+            sessionStorage.setItem("current_auth_mode", "forgot-password");
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-chevron-left"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+            />
+          </svg>
+        </p>
+
         <h2 className="card-title">Reset Password</h2>
         <form className="select-none">
           <label className="input w-full">
@@ -111,7 +135,7 @@ export default function ResetPassword({
   );
 }
 
-const PasswordEyeModes = ({
+export const PasswordEyeModes = ({
   showPassword,
   setShowPassword,
 }: {

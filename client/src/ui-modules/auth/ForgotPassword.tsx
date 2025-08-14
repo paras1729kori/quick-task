@@ -23,6 +23,7 @@ export default function ForgotPassword({
     const res = await forgotPassword(formData?.email);
 
     if (res?.token) {
+      toast.success("Thanks for verifying yourself");
       setCurrentAuthMode("reset-password");
       sessionStorage.setItem("current_auth_mode", "reset-password");
     } else {

@@ -3,8 +3,8 @@ export default function Footer() {
     <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10 gap-4 items-start md:items-end justify-between sticky bottom-0 z-20">
       <aside>
         <div>
-          <p className="font-semibold text-xl">Quick-Task</p>The smart,
-          share-anywhere task completer
+          <p className="font-semibold text-xl">Quick-Task-Master</p>The smart,
+          focused task completer
         </div>
         <div className="w-full flex flex-wrap text-base-content/80 gap-y-0 leading-relaxed">
           Hey Curious 👋 I'm{" "}
@@ -18,7 +18,7 @@ export default function Footer() {
             </a>
             , the
           </span>{" "}
-          {`creator of Quick-Task`}. You can follow my work on...
+          {`creator of Quick-Task-Master`}. You can follow my work on...
         </div>
       </aside>
       <nav className="flex items-center gap-2">
