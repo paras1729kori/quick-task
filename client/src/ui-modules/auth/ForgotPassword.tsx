@@ -20,10 +20,14 @@ export default function ForgotPassword({
       return;
     }
 
-    await forgotPassword(formData?.email);
+    const res = await forgotPassword(formData?.email);
 
-    setCurrentAuthMode("reset-password");
-    sessionStorage.setItem("current_auth_mode", "reset-password");
+    if (res?.token) {
+      setCurrentAuthMode("reset-password");
+      sessionStorage.setItem("current_auth_mode", "reset-password");
+    } else {
+      toast.warning("Please enter registered email");
+    }
   };
 
   return (
