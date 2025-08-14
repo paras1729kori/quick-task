@@ -9,7 +9,6 @@ COPY package*.json ./
 # Install deps
 RUN yarn cache clean --force
 RUN yarn install
-RUN yarn add esbuild@0.25.9 --dev
 
 # Copy source code
 COPY . .
