@@ -21,11 +21,11 @@ export default function SignIn({
 
   const handleLogin = async () => {
     if (_.isEmpty(formData?.email)) {
-      alert("Please enter your registered email");
+      toast.warning("Please enter your registered email");
       return;
     }
     if (_.isEmpty(formData?.password)) {
-      alert("Please enter your registered password");
+      toast.warning("Please enter your registered password");
       return;
     }
 

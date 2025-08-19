@@ -26,8 +26,8 @@ export class TodosService {
     if (filters.priority) where.priority = filters.priority;
     if (filters.search) {
       where.OR = [
-        { title: { startsWith: filters.search, mode: 'insensitive' } },
-        { description: { startsWith: filters.search, mode: 'insensitive' } },
+        { title: { contains: filters.search, mode: 'insensitive' } },
+        { description: { contains: filters.search, mode: 'insensitive' } },
       ];
     }
     return this.prisma.todo.findMany({ where, orderBy: { createdAt: 'desc' } });
