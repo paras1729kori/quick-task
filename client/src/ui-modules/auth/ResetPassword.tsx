@@ -33,7 +33,7 @@ export default function ResetPassword({
     const resetToken = sessionStorage.getItem("token") || "";
     const res = await resetPassword(resetToken, formData?.password);
 
-    if (res?.message?.includes(/password/i)) {
+    if (res?.message?.includes("successfully")) {
       setCurrentAuthMode("sign-in");
       sessionStorage.setItem("current_auth_mode", "sign-in");
     }
